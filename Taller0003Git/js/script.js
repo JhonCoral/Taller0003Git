@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var btnResultado = document.getElementById("resultado");
     var btnLimparTela = document.getElementById("limparTela");
     var btnApagarAnterior = document.getElementById("apagarAnterior");
+    var gradosBtn = document.getElementById("grados");
 
     listenerBtn.push(document.getElementById("ponto"));
 
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     listenerBtn.push(document.getElementById("subtracao"));
     listenerBtn.push(document.getElementById("divisao"));
     listenerBtn.push(document.getElementById("multiplicacao"));
+    
 
     //teclas númericas da calculadora
     listenerBtn.push(document.getElementById("num0"));
@@ -37,6 +39,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnResultado.onclick = function () {
         verificarResulatado();
+    }
+
+    gradosBtn.onclick = function () {
+        convertirAFahrenheit();
+    }
+
+    function convertirAFahrenheit() {
+        try {
+            // Obtener el valor ingresado en grados Celsius
+            var celsius = parseFloat(tela.value);
+
+            // Verificar si se ingresó un número válido
+            if (isNaN(celsius)) {
+                alert("Por favor, ingrese un número válido en grados Celsius.");
+                return;
+            }
+
+            // Realizar la conversión a Fahrenheit
+            var fahrenheit = (celsius * 9/5) + 32;
+
+            // Mostrar el resultado en la pantalla
+            tela.value = fahrenheit.toFixed(2) + " °F";
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     function verificarResulatado() {
